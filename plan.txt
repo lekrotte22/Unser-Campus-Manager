@@ -1,0 +1,4 @@
+DB:
+    Todo(Namen, Finished, Abgabedatuml)
+    Kalender -> Einträge(Namen, Datum)
+    Stundenplan -> Stunden(Zeiten, Namen, Lehrer)

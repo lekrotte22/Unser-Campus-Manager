@@ -1,1 +1,5 @@
-export class Todo {}
+export class Todo {
+  name: string;
+  fertig: boolean;
+  abgabedatum: Date;
+}

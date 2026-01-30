@@ -12,7 +12,9 @@ export class KalenderService {
   ) {}
 
   create(createKalenderDto: CreateKalenderDto) {
-    return this.kalenderRepository.create(createKalenderDto);
+    const res = this.kalenderRepository.create(createKalenderDto);
+    this.kalenderRepository.save(createKalenderDto);
+    return res;
   }
 
   findAll() {
@@ -24,6 +26,7 @@ export class KalenderService {
   }
 
   remove(id: number) {
-    return this.kalenderRepository.delete(id);
+    const obj = this.kalenderRepository.delete(id);
+    return obj;
   }
 }

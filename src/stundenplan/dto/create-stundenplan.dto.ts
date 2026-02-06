@@ -1,1 +1,5 @@
-export class CreateStundenplanDto {}
+import { Unterrichtsstunde } from '../entities/Unterrichtsstunde';
+
+export class CreateStundenplanDto {
+  stundenplan: Unterrichtsstunde;
+}

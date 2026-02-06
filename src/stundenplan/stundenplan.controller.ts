@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  Put,
+} from '@nestjs/common';
 import { StundenplanService } from './stundenplan.service';
 import { CreateStundenplanDto } from './dto/create-stundenplan.dto';
 import { UpdateStundenplanDto } from './dto/update-stundenplan.dto';
@@ -13,17 +21,20 @@ export class StundenplanController {
   }
 
   @Get()
-  findAll() {
+  getStundenplan() {
     return this.stundenplanService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  getEinenTag(@Param('id') id: string) {
     return this.stundenplanService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateStundenplanDto: UpdateStundenplanDto) {
+  @Put(':id')
+  update(
+    @Param('id') id: string,
+    @Body() updateStundenplanDto: UpdateStundenplanDto,
+  ) {
     return this.stundenplanService.update(+id, updateStundenplanDto);
   }
 

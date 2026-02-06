@@ -7,11 +7,15 @@ import { KalenderModule } from './kalender/kalender.module';
 import { Kalender } from './kalender/entities/kalender.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import 'reflect-metadata';
+import { TodoModule } from './todo/todo.module';
+import { StundenplanModule } from './stundenplan/stundenplan.module';
+import { Todo } from './todo/entities/Todo';
+import { Stundenplan } from './stundenplan/entities/Stundenplan.entity';
 @Module({
   imports: [
-    //TodoModule,
+    TodoModule,
     KalenderModule,
-    //StundenplanModule,
+    StundenplanModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -19,7 +23,7 @@ import 'reflect-metadata';
       username: 'admin',
       password: 'admin',
       database: 'CM',
-      entities: [Kalender],
+      entities: [Kalender, Todo, Stundenplan],
       synchronize: true,
     }),
   ],

@@ -11,8 +11,16 @@ import { TodoModule } from './todo/todo.module';
 import { StundenplanModule } from './stundenplan/stundenplan.module';
 import { Todo } from './todo/entities/Todo';
 import { Stundenplan } from './stundenplan/entities/Stundenplan.entity';
+import { AuthGuard, KeycloakConnectModule } from 'nest-keycloak-connect';
+import { APP_GUARD } from '@nestjs/core';
 @Module({
   imports: [
+    KeycloakConnectModule.register({
+      authServerUrl: 'http://localhost:8081',
+      realm: 'htl',
+      clientId: 'todo_be',
+      secret: 'U3POYT7ae4sokL3Xdi183flyzrHpAVOR',
+    }),
     TodoModule,
     KalenderModule,
     StundenplanModule,
@@ -28,6 +36,12 @@ import { Stundenplan } from './stundenplan/entities/Stundenplan.entity';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 export class AppModule {}

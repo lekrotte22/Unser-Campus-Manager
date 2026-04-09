@@ -10,6 +10,7 @@ async function bootstrap() {
     .setTitle('Campus Manager')
     .setDescription('Campus Manager')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   //create swagger document

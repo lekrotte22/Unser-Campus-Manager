@@ -29,6 +29,7 @@
     "@nestjs/typeorm": "^11.0.0",
     "keycloak-angular": "^21.0.0",
     "keycloak-js": "^26.2.3",
+    "keycloak-connect": "^26.1.1",
     "mysql2": "^3.16.1",
     "nest-keycloak-connect": "^1.10.1",
     "pg": "^8.17.1",

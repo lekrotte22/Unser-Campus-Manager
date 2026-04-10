@@ -1,0 +1,66 @@
+<div class="campus-manager">
+
+  <!-- Top Header Bar -->
+  <header class="cm-header">
+    <button class="cm-home-btn" aria-label="Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      </svg>
+    </button>
+    <h1 class="cm-title">UNSER<span class="cm-reg">®</span> Campus Manager</h1>
+  </header>
+
+  <!-- Calendar Container -->
+  <main class="cm-body">
+    <div class="cm-calendar">
+
+      <!-- Month Navigation -->
+      <div class="cm-month-bar">
+        <div class="cm-month-label">{{ monthYearLabel }}</div>
+        <div class="cm-nav-btns">
+          <button class="cm-nav-btn" (click)="prevMonth()" aria-label="Vorheriger Monat">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </button>
+          <button class="cm-nav-btn" (click)="nextMonth()" aria-label="Nächster Monat">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Weekday Headers -->
+      <div class="cm-grid">
+        <div class="cm-weekday-header" *ngFor="let day of weekdays">
+          {{ day }}
+        </div>
+
+        <!-- Day Cells -->
+        <ng-container *ngFor="let week of weeks">
+          <div
+            class="cm-day-cell"
+            *ngFor="let day of week"
+            [class.cm-day--other-month]="!day.isCurrentMonth"
+            [class.cm-day--today]="day.isToday"
+            [class.cm-day--selected]="day.isSelected"
+            (click)="selectDay(day)"
+          >
+            <span class="cm-day-number">{{ day.dayNumber }}</span>
+            <div class="cm-events" *ngIf="day.events.length > 0">
+              <span
+                class="cm-event-dot"
+                *ngFor="let event of day.events"
+                [style.background-color]="event.color || '#2d7a8a'"
+                [title]="event.title"
+              ></span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+    </div>
+  </main>
+
+</div>

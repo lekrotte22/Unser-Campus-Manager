@@ -18,15 +18,9 @@ import { APP_GUARD } from '@nestjs/core';
     KeycloakConnectModule.register({
       authServerUrl: 'http://localhost:8081',
       realm: 'master',
-      clientId: 'campus_fe',
-      secret: 'qT16wR8O9gvjrDu9bzBQH7w9zjIoowKD',
-    }),/* Tim
-    KeycloakConnectModule.register({
-      authServerUrl: 'http://localhost:8081',
-      realm: 'htl',
-      clientId: 'todo_be',
-      secret: 'U3POYT7ae4sokL3Xdi183flyzrHpAVOR',
-    }),*/
+      clientId: 'campus_be',
+      secret: 'KiPRq6fufIGMefWetPgCxET51BOI7t22',
+    }),
     TodoModule,
     KalenderModule,
     StundenplanModule,

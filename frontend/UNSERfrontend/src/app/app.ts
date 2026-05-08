@@ -6,7 +6,7 @@ import { CalendarComponent } from './Components/Calendar/calendar.component';
   selector: 'app-root',
   imports: [RouterOutlet, CalendarComponent],
   styleUrl: './app.css',
-  template: `<app-calendar></app-calendar>`,
+  templateUrl: './app.html',
 
 })
 export class App {

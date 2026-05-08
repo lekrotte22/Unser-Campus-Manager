@@ -3,7 +3,7 @@
   "version": 1,
   "cli": {
     "packageManager": "npm",
-    "analytics": false
+    "analytics": "694909e1-f135-4f2b-a93f-02004d9c3e34"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -27,7 +27,11 @@
             ],
             "styles": [
               "src/styles.css"
-            ]
+            ],
+            "outputMode": "static",
+            "security": {
+              "allowedHosts": []
+            }
           },
           "configurations": {
             "production": {

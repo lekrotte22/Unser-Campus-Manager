@@ -17,9 +17,9 @@ import { APP_GUARD } from '@nestjs/core';
   imports: [
     KeycloakConnectModule.register({
       authServerUrl: 'http://localhost:8081',
-      realm: 'master',
+      realm: 'campus',
       clientId: 'campus_be',
-      secret: 'KiPRq6fufIGMefWetPgCxET51BOI7t22',
+      secret: '1K6CUCu1jRKC60shDME6BssbYSBADhJf',
     }),
     TodoModule,
     KalenderModule,

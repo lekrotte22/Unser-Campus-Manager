@@ -1,0 +1,297 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "AppController_getHello",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "type": "string" } } }
+          }
+        },
+        "security": [{ "bearer": [] }],
+        "tags": ["App"]
+      }
+    },
+    "/todo": {
+      "post": {
+        "operationId": "createTodo",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/CreateTodoDto" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "type": "array", "items": { "type": "object" } } }
+            }
+          }
+        },
+        "summary": "Create Todo",
+        "tags": ["Todos"]
+      },
+      "get": {
+        "operationId": "findAllTodos",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "type": "array", "items": { "type": "object" } } }
+            }
+          }
+        },
+        "summary": "findAllTodos",
+        "tags": ["Todos"]
+      }
+    },
+    "/todo/{id}": {
+      "get": {
+        "operationId": "getTodoByIds",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "type": "string" } } }
+          }
+        },
+        "summary": "getTodoByIds",
+        "tags": ["Todos"]
+      },
+      "put": {
+        "operationId": "updateTodo",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateTodoDto" } }
+          }
+        },
+        "responses": { "200": { "description": "" } },
+        "summary": "updateTodo",
+        "tags": ["Todos"]
+      },
+      "delete": {
+        "operationId": "deleteTodo",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "type": "string" } } }
+          }
+        },
+        "summary": "deleteTodo",
+        "tags": ["Todos"]
+      }
+    },
+    "/kalender": {
+      "post": {
+        "operationId": "KalenderController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/CreateKalenderDto" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Kalender" } }
+            }
+          }
+        },
+        "tags": ["Kalender"]
+      },
+      "get": {
+        "operationId": "KalenderController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Kalender" } }
+              }
+            }
+          }
+        },
+        "tags": ["Kalender"]
+      }
+    },
+    "/kalender/{id}": {
+      "get": {
+        "operationId": "KalenderController_findOne",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "type": "object" } } }
+          }
+        },
+        "tags": ["Kalender"]
+      },
+      "delete": {
+        "operationId": "KalenderController_remove",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "" } },
+        "tags": ["Kalender"]
+      }
+    },
+    "/stundenplan": {
+      "post": {
+        "operationId": "StundenplanController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateStundenplanDto" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": { "application/json": { "schema": { "type": "string" } } }
+          }
+        },
+        "tags": ["Stundenplan"]
+      },
+      "get": {
+        "operationId": "StundenplanController_getStundenplan",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "type": "string" } } }
+          }
+        },
+        "tags": ["Stundenplan"]
+      }
+    },
+    "/stundenplan/{id}": {
+      "get": {
+        "operationId": "StundenplanController_getEinenTag",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "type": "string" } } }
+          }
+        },
+        "tags": ["Stundenplan"]
+      },
+      "put": {
+        "operationId": "StundenplanController_update",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateStundenplanDto" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "type": "string" } } }
+          }
+        },
+        "tags": ["Stundenplan"]
+      },
+      "delete": {
+        "operationId": "StundenplanController_remove",
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "type": "string" } } }
+          }
+        },
+        "tags": ["Stundenplan"]
+      }
+    }
+  },
+  "info": {
+    "title": "Campus Manager",
+    "description": "Campus Manager",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": { "bearer": { "scheme": "bearer", "bearerFormat": "JWT", "type": "http" } },
+    "schemas": {
+      "CreateTodoDto": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "fertig": { "type": "boolean" },
+          "abgabedatum": { "format": "date-time", "type": "string" }
+        },
+        "required": ["name", "fertig", "abgabedatum"]
+      },
+      "UpdateTodoDto": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "fertig": { "type": "boolean" },
+          "abgabedatum": { "format": "date-time", "type": "string" }
+        },
+        "required": ["name", "fertig", "abgabedatum"]
+      },
+      "CreateKalenderDto": {
+        "type": "object",
+        "properties": {
+          "bezeichnung": { "type": "string" },
+          "datum": { "format": "date-time", "type": "string" },
+          "aufgabenBeschreibung": { "type": "string" }
+        },
+        "required": ["bezeichnung", "datum", "aufgabenBeschreibung"]
+      },
+      "Kalender": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "number" },
+          "bezeichnung": { "type": "string" },
+          "datum": { "format": "date-time", "type": "string" },
+          "aufgabenBeschreibung": { "type": "string" }
+        },
+        "required": ["id", "bezeichnung", "datum", "aufgabenBeschreibung"]
+      },
+      "Unterrichtsstunde": { "type": "object", "properties": {} },
+      "CreateStundenplanDto": {
+        "type": "object",
+        "properties": { "stundenplan": { "$ref": "#/components/schemas/Unterrichtsstunde" } },
+        "required": ["stundenplan"]
+      },
+      "UpdateStundenplanDto": { "type": "object", "properties": {} }
+    }
+  }
+}

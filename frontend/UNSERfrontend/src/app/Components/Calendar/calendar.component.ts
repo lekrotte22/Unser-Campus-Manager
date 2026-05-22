@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AppService, KalenderService } from '../../api';
 
 export interface CalendarDay {
   date: Date;
@@ -27,9 +28,12 @@ export class CalendarComponent implements OnInit {
   currentDate: Date = new Date();
   selectedDate: Date | null = null;
 
+  CalendarService= inject(AppService)
+
   weekdays: string[] = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
 
   weeks: CalendarDay[][] = [];
+
 
   // Sample events – replace with real data source
   sampleEvents: { [key: string]: CalendarEvent[] } = {
@@ -38,6 +42,17 @@ export class CalendarComponent implements OnInit {
       { id: '2', title: 'Seminar', color: '#e07b3a' },
     ],
   };
+
+  test() {
+    this.CalendarService.appControllerGetHello().subscribe({
+      next: (event) => {
+        console.log(event);
+      },
+      error: (e) => {
+        console.error(e);
+      }
+    })
+  }
 
   get monthYearLabel(): string {
     const months = [
@@ -49,6 +64,7 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildCalendar();
+    this.test()
   }
 
   buildCalendar(): void {

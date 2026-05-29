@@ -19,7 +19,7 @@ import { APP_GUARD } from '@nestjs/core';
       authServerUrl: 'http://localhost:8081',
       realm: 'campus',
       clientId: 'campus_be',
-      secret: '1K6CUCu1jRKC60shDME6BssbYSBADhJf',
+      secret: 'OI13167kdwcc2ORLPFlMwTDBP7s04d5H',
     }),
     TodoModule,
     KalenderModule,

@@ -1,0 +1,60 @@
+.sp-card {
+  background: #d6e0e3;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 280px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  font-family: 'Roboto', sans-serif;
+}
+
+.sp-header {
+  background: #2d7d8e;
+  padding: 18px 20px;
+}
+
+.sp-date {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.sp-body {
+  padding: 12px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sp-stunde {
+  background: #c4ced1;
+  border-radius: 8px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  min-height: 58px;
+}
+
+.sp-accent {
+  width: 5px;
+  flex-shrink: 0;
+}
+
+.sp-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 14px;
+  gap: 2px;
+}
+
+.sp-fach {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.sp-zeit {
+  font-size: 0.8rem;
+  color: #555;
+}

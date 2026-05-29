@@ -1,0 +1,154 @@
+.todo-card {
+  background: #d6e0e3;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 240px;
+  /* Feste Höhe damit die Card nicht endlos wächst */
+  max-height: 380px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  font-family: 'Roboto', sans-serif;
+}
+
+.todo-header {
+  background: #2d7d8e;
+  padding: 14px 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.todo-title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* ── Scrollbare Liste ── */
+.todo-body {
+  padding: 6px 0 10px;
+  overflow-y: auto;
+  flex: 1;
+  /* Dezenter Scrollbalken */
+  scrollbar-width: thin;
+  scrollbar-color: #2d7d8e #d6e0e3;
+}
+
+.todo-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.todo-body::-webkit-scrollbar-track {
+  background: #d6e0e3;
+}
+
+.todo-body::-webkit-scrollbar-thumb {
+  background: #2d7d8e;
+  border-radius: 4px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  gap: 12px;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-label {
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  flex: 1;
+  transition: color 0.15s;
+}
+
+.todo-label.done {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Hide native checkbox */
+.todo-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.todo-checkbox {
+  cursor: pointer;
+}
+
+.checkmark {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 2px solid #5c4db1;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.checkmark.checked {
+  background: #5c4db1;
+  border-color: #5c4db1;
+}
+
+/* ── Loading / Error ── */
+.todo-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px 16px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.todo-error {
+  color: #b94a4a;
+}
+
+.todo-retry {
+  background: #2d7d8e;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.todo-retry:hover {
+  background: #1e5f6e;
+}
+
+.todo-spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid rgba(45, 125, 142, 0.25);
+  border-top-color: #2d7d8e;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.todo-empty {
+  padding: 16px 20px;
+  font-size: 0.88rem;
+  color: #777;
+  text-align: center;
+}
+

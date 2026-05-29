@@ -1,0 +1,35 @@
+.todo-item {
+  background: #b3b3b3;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  gap: 15px;
+}
+
+.todo-circle {
+  background: #e0ccff;
+  color: #663399;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.todo-text {
+  flex-grow: 1;
+  text-align: center;
+  color: #333;
+  font-size: 1rem;
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #663399;
+  cursor: pointer;
+}

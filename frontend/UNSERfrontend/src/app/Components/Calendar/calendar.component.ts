@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppService, KalenderService } from '../../api';
+import { HeadBar } from '../head-bar/head-bar';
+import { AppService } from '../../Service/AppService';
 
 export interface CalendarDay {
   date: Date;
@@ -20,20 +21,27 @@ export interface CalendarEvent {
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeadBar],
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css'],
 })
 export class CalendarComponent implements OnInit {
   currentDate: Date = new Date();
   selectedDate: Date | null = null;
 
-  CalendarService= inject(AppService)
+  CalendarService = inject(AppService);
 
-  weekdays: string[] = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+  weekdays: string[] = [
+    'Montag',
+    'Dienstag',
+    'Mittwoch',
+    'Donnerstag',
+    'Freitag',
+    'Samstag',
+    'Sonntag',
+  ];
 
   weeks: CalendarDay[][] = [];
-
 
   // Sample events – replace with real data source
   sampleEvents: { [key: string]: CalendarEvent[] } = {
@@ -44,27 +52,39 @@ export class CalendarComponent implements OnInit {
   };
 
   test() {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
     this.CalendarService.appControllerGetHello().subscribe({
-      next: (event) => {
+      next: (event: any) => {
         console.log(event);
       },
-      error: (e) => {
+      error: (e: any) => {
         console.error(e);
-      }
-    })
+      },
+    });
   }
 
   get monthYearLabel(): string {
     const months = [
-      'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
-      'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+      'Januar',
+      'Februar',
+      'März',
+      'April',
+      'Mai',
+      'Juni',
+      'Juli',
+      'August',
+      'September',
+      'Oktober',
+      'November',
+      'Dezember',
     ];
     return `${months[this.currentDate.getMonth()]} ${this.currentDate.getFullYear().toString().slice(-2)}`;
   }
 
   ngOnInit(): void {
     this.buildCalendar();
-    this.test()
+    this.test();
   }
 
   buildCalendar(): void {
@@ -82,7 +102,7 @@ export class CalendarComponent implements OnInit {
     calStart.setDate(calStart.getDate() - startDow);
 
     this.weeks = [];
-    let current = new Date(calStart);
+    const current = new Date(calStart);
 
     for (let w = 0; w < 6; w++) {
       const week: CalendarDay[] = [];
@@ -123,9 +143,11 @@ export class CalendarComponent implements OnInit {
   }
 
   private isSameDay(a: Date, b: Date): boolean {
-    return a.getFullYear() === b.getFullYear() &&
-           a.getMonth() === b.getMonth() &&
-           a.getDate() === b.getDate();
+    return (
+      a.getFullYear() === b.getFullYear() &&
+      a.getMonth() === b.getMonth() &&
+      a.getDate() === b.getDate()
+    );
   }
 
   private formatKey(date: Date): string {

@@ -1,0 +1,26 @@
+<div class="kal-card">
+  <div class="kal-header">
+    <span class="kal-date-text">{{ headerText }}</span>
+  </div>
+
+  <div class="kal-body">
+    <div class="kal-weekdays">
+      <span *ngFor="let d of weekdays" class="kal-wd">{{ d }}</span>
+    </div>
+
+    <div class="kal-weeks">
+      <div class="kal-week" *ngFor="let week of weeks">
+        <span
+          *ngFor="let day of week"
+          class="kal-day"
+          [class.kal-today]="isToday(day)"
+          [class.kal-selected]="isSelected(day)"
+          [class.kal-empty]="!day"
+          (click)="selectDay(day)"
+        >
+          {{ day }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="wetter-card">
+  <!-- Header -->
+  <div class="wetter-header">
+    <div class="wetter-header-left">
+      <span class="wetter-icon-main">⛅</span>
+      <span class="wetter-ort">{{ ort }}</span>
+    </div>
+    <button class="wetter-menu-btn" aria-label="Mehr">
+      <span>⋮</span>
+    </button>
+  </div>
+
+  <!-- Hero image -->
+  <div class="wetter-hero">
+    <div class="wetter-hero-placeholder">
+      <span class="wetter-hero-emoji">🌻</span>
+    </div>
+  </div>
+
+  <!-- Forecast table -->
+  <div class="wetter-forecast">
+    <!-- Day row -->
+    <div class="wetter-row wetter-row-days">
+      <div class="wetter-col" *ngFor="let t of tage">
+        <span class="wetter-tag">{{ t.tag }}</span>
+        <span class="wetter-datum">{{ t.datum }}</span>
+      </div>
+    </div>
+
+    <!-- Day icons -->
+    <div class="wetter-row">
+      <div class="wetter-col" *ngFor="let t of tage">
+        <span class="wetter-emoji">{{ t.iconTag }}</span>
+      </div>
+    </div>
+
+    <!-- Day temps -->
+    <div class="wetter-row wetter-row-temps">
+      <div class="wetter-col" *ngFor="let t of tage">
+        <span class="wetter-temp">{{ t.tagTemp }}</span>
+      </div>
+    </div>
+
+    <div class="wetter-divider"></div>
+
+    <!-- Night icons -->
+    <div class="wetter-row">
+      <div class="wetter-col" *ngFor="let t of tage">
+        <span class="wetter-emoji wetter-emoji-small">{{ t.iconNacht }}</span>
+      </div>
+    </div>
+
+    <!-- Night temps -->
+    <div class="wetter-row wetter-row-temps">
+      <div class="wetter-col" *ngFor="let t of tage">
+        <span class="wetter-temp wetter-temp-night">{{ t.nachtTemp }}</span>
+      </div>
+    </div>
+  </div>
+</div>

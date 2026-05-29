@@ -1,0 +1,87 @@
+.kal-card {
+  background: #d6e0e3;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 260px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  font-family: 'Roboto', sans-serif;
+}
+
+.kal-header {
+  background: #2d7d8e;
+  padding: 0;
+}
+
+.kal-date-text {
+  display: block;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 400;
+  padding: 20px 24px 16px;
+  letter-spacing: 0.01em;
+}
+
+.kal-body {
+  padding: 10px 16px 16px;
+}
+
+.kal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 6px;
+}
+
+.kal-wd {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #444;
+  padding: 4px 0;
+}
+
+.kal-weeks {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kal-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.kal-day {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #222;
+  padding: 6px 4px;
+  border-radius: 50%;
+  cursor: pointer;
+  line-height: 1.4;
+  transition: background 0.15s;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kal-day:hover:not(.kal-empty) {
+  background: rgba(45, 125, 142, 0.2);
+}
+
+.kal-day.kal-empty {
+  cursor: default;
+  color: transparent;
+}
+
+.kal-day.kal-selected {
+  background: #5c4db1;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.kal-day.kal-today:not(.kal-selected) {
+  background: rgba(92, 77, 177, 0.25);
+  color: #5c4db1;
+  font-weight: 600;
+}

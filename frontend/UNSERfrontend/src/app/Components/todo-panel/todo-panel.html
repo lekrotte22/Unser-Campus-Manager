@@ -1,0 +1,26 @@
+<div class="panel-container">
+  <div class="todo-card">
+    <div class="title-wrapper">
+      <h1 class="todo-title">Todos</h1>
+    </div>
+
+    <div class="input-container">
+      <input
+        type="text"
+        [(ngModel)]="newTodoText"
+        placeholder="Todo Hinzufügen"
+        (keyup.enter)="addTodo()"
+        class="todo-input"
+      >
+      <button (click)="addTodo()" class="add-button">+</button>
+    </div>
+
+    <div class="todo-list">
+      <app-todo
+        *ngFor="let todo of todos"
+        [title]="todo.title"
+        [completed]="todo.completed"
+      ></app-todo>
+    </div>
+  </div>
+</div>

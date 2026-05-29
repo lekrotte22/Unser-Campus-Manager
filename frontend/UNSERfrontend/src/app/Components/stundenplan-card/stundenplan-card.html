@@ -1,0 +1,15 @@
+<div class="sp-card">
+  <div class="sp-header">
+    <span class="sp-date">{{ heute }}</span>
+  </div>
+
+  <div class="sp-body">
+    <div class="sp-stunde" *ngFor="let s of stunden">
+      <div class="sp-accent" [style.background]="s.farbe"></div>
+      <div class="sp-info">
+        <span class="sp-fach">{{ s.fach }}</span>
+        <span class="sp-zeit">{{ s.zeit }}</span>
+      </div>
+    </div>
+  </div>
+</div>

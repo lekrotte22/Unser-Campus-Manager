@@ -1,0 +1,35 @@
+<div class="todo-card">
+  <div class="todo-header">
+    <span class="todo-title">To-Do</span>
+  </div>
+
+  <!-- Loading -->
+  <div class="todo-state" *ngIf="isLoading">
+    <div class="todo-spinner"></div>
+    <span>Laden…</span>
+  </div>
+
+  <!-- Error -->
+  <div class="todo-state todo-error" *ngIf="hasError && !isLoading">
+    <span>⚠ Fehler beim Laden</span>
+    <button class="todo-retry" (click)="loadTodos()">Erneut versuchen</button>
+  </div>
+
+  <!-- List -->
+  <div class="todo-body" *ngIf="!isLoading && !hasError">
+    <div class="todo-item" *ngFor="let item of items">
+      <span class="todo-label" [class.done]="item.done">{{ item.label }}</span>
+      <label class="todo-checkbox" (click)="toggleDone(item)">
+        <span class="checkmark" [class.checked]="item.done">
+          <svg *ngIf="item.done" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="14" height="14">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+          </svg>
+        </span>
+      </label>
+    </div>
+
+    <div class="todo-empty" *ngIf="items.length === 0">
+      Keine Einträge vorhanden.
+    </div>
+  </div>
+</div>

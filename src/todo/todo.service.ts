@@ -21,37 +21,31 @@ export class TodoService {
     return this.todos;
   }
 
-  findOne(id: number) {
-    this.todos.forEach((todo) => {
-      if (parseInt(todo.id) === id) {
-        return todo;
-      }
-    });
-    return 'Not found';
+  findOne(id: string) {
+    const todo = this.todos.find((todo) => todo.id === id);
+    return todo ?? 'Not found';
   }
 
-  update(id: number, updateTodoDto: UpdateTodoDto) {
-    this.todos.forEach((todo) => {
-      if (parseInt(todo.id) === id) {
-        const newTodo: TodoInterface = {
-          id: uuid(),
-          ...updateTodoDto,
-        };
-        this.todos.splice(parseInt(todo.id));
+  update(id: string, updateTodoDto: UpdateTodoDto) {
+    const index = this.todos.findIndex((todo) => todo.id === id);
+    if (index === -1) {
+      return 'Not found';
+    }
 
-        this.todos.push(newTodo);
-        return newTodo;
-      }
-    });
+    this.todos[index] = {
+      ...this.todos[index],
+      ...updateTodoDto,
+    };
+    return this.todos[index];
   }
 
-  remove(id: number) {
-    this.todos.forEach((todo) => {
-      if (parseInt(todo.id) === id) {
-        this.todos.splice(Number(todo.id));
-        return todo;
-      }
-    });
-    return 'Not found';
+  remove(id: string) {
+    const index = this.todos.findIndex((todo) => todo.id === id);
+    if (index === -1) {
+      return 'Not found';
+    }
+
+    const [removed] = this.todos.splice(index, 1);
+    return removed;
   }
 }

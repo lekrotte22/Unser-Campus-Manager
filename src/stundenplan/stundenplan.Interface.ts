@@ -1,7 +1,12 @@
-import { Unterrichtsstunde } from './entities/Unterrichtsstunde';
+export interface Stunde {
+  fach: string;
+  zeit: string;
+  farbe: string;
+}
 
-export class CreateStundenplanDto {
+export interface Stundenplan {
   id: number;
   tag: string;
-  stunden: Unterrichtsstunde[];
+  datum: string;
+  stunden: Stunde[];
 }

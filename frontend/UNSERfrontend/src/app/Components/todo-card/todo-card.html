@@ -3,13 +3,11 @@
     <span class="todo-title">To-Do</span>
   </div>
 
-  <!-- Loading -->
   <div class="todo-state" *ngIf="isLoading">
     <div class="todo-spinner"></div>
     <span>Laden…</span>
   </div>
 
-  <!-- Error -->
   <div class="todo-state todo-error" *ngIf="hasError && !isLoading">
     <span>⚠ Fehler beim Laden</span>
     <button class="todo-retry" (click)="loadTodos()">Erneut versuchen</button>

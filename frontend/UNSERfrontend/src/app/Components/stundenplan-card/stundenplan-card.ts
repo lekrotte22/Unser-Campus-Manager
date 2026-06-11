@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
@@ -21,10 +21,13 @@ export class StundenplanCard implements OnInit {
   isLoading: boolean = true;
   hasError: boolean = false;
 
-  // ── Passe die URL an dein Backend an ──
-  private readonly API_URL = '/api/stundenplan/heute';
+  // ── Backend laeuft auf Port 3002 ──
+  private readonly API_URL = 'http://localhost:3002/stundenplan/heute';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnInit(): void {
     this.loadStundenplan();
@@ -39,10 +42,12 @@ export class StundenplanCard implements OnInit {
         this.heute = data.datum;
         this.stunden = data.stunden;
         this.isLoading = false;
+        this.cdr.markForCheck();
       },
       error: () => {
         this.hasError = true;
         this.isLoading = false;
+        this.cdr.markForCheck();
       },
     });
   }

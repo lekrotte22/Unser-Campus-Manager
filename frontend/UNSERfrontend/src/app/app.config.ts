@@ -1,8 +1,7 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import {
   AutoRefreshTokenService,
@@ -15,13 +14,13 @@ import { BASE_PATH } from './api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideZonelessChangeDetection(),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideClientHydration(withEventReplay()),
     provideHttpClient(withInterceptors([includeBearerTokenInterceptor])),
     {
       provide: BASE_PATH,
-      useValue: 'http://localhost:3000',
+      useValue: 'http://localhost:3002',
     },
     provideKeycloak({
       config: {
@@ -43,10 +42,12 @@ export const appConfig: ApplicationConfig = {
         UserActivityService,
         {
           provide: INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG,
-          useValue: {
-            urlPattern: /^(.*)$/,
-            bearerPrefix: 'Bearer'
-          },
+          useValue: [
+            {
+              urlPattern: /^(.*)$/,
+              bearerPrefix: 'Bearer'
+            },
+          ],
         },
       ]
     }),

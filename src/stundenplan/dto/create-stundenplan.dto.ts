@@ -1,5 +1,11 @@
-import { Unterrichtsstunde } from '../entities/Unterrichtsstunde';
+export class StundeDto {
+  fach: string;
+  zeit: string;
+  farbe: string;
+}
 
 export class CreateStundenplanDto {
-  stundenplan: Unterrichtsstunde;
+  tag: string;
+  datum: string;
+  stunden: StundeDto[];
 }

@@ -3,7 +3,6 @@
   border-radius: 16px;
   overflow: hidden;
   width: 240px;
-  /* Feste Höhe damit die Card nicht endlos wächst */
   max-height: 380px;
   display: flex;
   flex-direction: column;

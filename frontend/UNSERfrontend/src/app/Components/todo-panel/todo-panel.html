@@ -12,15 +12,28 @@
         (keyup.enter)="addTodo()"
         class="todo-input"
       >
-      <button (click)="addTodo()" class="add-button">+</button>
+      <button (click)="addTodo()" class="add-button" aria-label="Todo hinzufügen">+</button>
     </div>
 
     <div class="todo-list">
+      <div class="todo-state" *ngIf="isLoading">Laden…</div>
+
+      <div class="todo-state todo-error" *ngIf="hasError && !isLoading">
+        <span>Fehler beim Laden</span>
+        <button class="retry-button" (click)="loadTodos()">Erneut versuchen</button>
+      </div>
+
       <app-todo
         *ngFor="let todo of todos"
-        [title]="todo.title"
-        [completed]="todo.completed"
+        [title]="todo.name"
+        [completed]="todo.fertig"
+        (toggled)="toggleTodo(todo, $event)"
+        (removed)="removeTodo(todo)"
       ></app-todo>
+
+      <div class="todo-empty" *ngIf="!isLoading && !hasError && todos.length === 0">
+        Keine Todos vorhanden.
+      </div>
     </div>
   </div>
 </div>

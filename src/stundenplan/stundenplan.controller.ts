@@ -25,6 +25,11 @@ export class StundenplanController {
     return this.stundenplanService.findAll();
   }
 
+  @Get('heute')
+  getHeute() {
+    return this.stundenplanService.findHeute();
+  }
+
   @Get(':id')
   getEinenTag(@Param('id') id: string) {
     return this.stundenplanService.findOne(+id);

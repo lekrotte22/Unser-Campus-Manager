@@ -1,9 +1,17 @@
-<div class="todo-item">
-  <div class="todo-circle">T</div>
+<div class="todo-item" [class.completed]="completed">
+  <div class="todo-circle">{{ initial }}</div>
   <span class="todo-text">{{ title }}</span>
   <input
     type="checkbox"
     class="todo-checkbox"
     [checked]="completed"
+    (change)="onToggle($event)"
   >
+  <button
+    type="button"
+    class="todo-delete"
+    aria-label="Todo löschen"
+    [disabled]="!completed"
+    (click)="onRemove()"
+  >×</button>
 </div>
